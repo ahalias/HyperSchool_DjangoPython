@@ -1,0 +1,17 @@
+{% extends 'schedule/base.html' %}
+
+{% block content %}
+<h2>HyperSchool</h2>
+<p><a href="{% url 'signup' %}">Sign up</a></p>
+<p><a href="{% url 'login' %}">Log in</a></p>
+
+<form method="GET">
+
+    {{ form.as_table }}
+<input type="submit">
+</form>
+<p>{{ course_list|length }} courses</p>
+{% for course in course_list %}
+<p><a href="{{ course.get_absolute_url }}">{{ course.title }}</a></p>
+{% endfor %}
+{% endblock %}

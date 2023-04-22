@@ -1,0 +1,28 @@
+{% extends 'schedule/base.html' %}
+
+{% block content %}
+<h2>HyperSchool course</h2>
+
+<h2>Title:</h2>
+<h2>{{ course.title }}</h2>
+<p>Short description of the course:</p>
+<p>{{ course.info }}</p>
+<p>Duration:</p>
+<p>{{ course.duration_months }} months</p>
+<p>Price:</p>
+<p>{{ course.price }} USD</p>
+<h2>Teachers:</h2>
+{% for teacher in course.teacher.all %}
+<p>Name: <a href="{{ teacher.get_absolute_url }}">{{ teacher.name }} {{ teacher.surname }}</a></p>
+<h2>Students:</h2>
+{% for student in students %}
+<p>{{ student.name }} {{ student.surname }}</p>
+{% endfor %}
+<h2>Join us!</h2>
+<p><a href="{% url 'add_course' %}">Apply to the course {{ course.title }}</a></p>
+
+
+{% endfor %}
+
+
+{% endblock %}
